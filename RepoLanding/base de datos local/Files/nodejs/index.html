@@ -7,78 +7,190 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Header principal -->
-<header>
-  <h1>MiMarca</h1>
-  <nav>
-    <!-- Menú de navegación -->
-    <a href="#Inicio">Inicio</a>
-    <a href="#Colección">Colección</a>
-    <a href="#ofertas">Ofertas</a>
-    <a href="#Contacto">Contacto</a>
-  </nav>
-
-</header>
-<section class="hero" id = "Inicio">
-  <div>
-    <h2>Nueva Colección 2026</h2>
-    <button class="btn">Comprar Ahora</button>
-  </div>
-</section>
-<!-- Productos destacados -->
-<section class="products" id= "Colección">
-  <h2>Productos Destacados</h2>
-  <div class="product-grid">
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="">
-      <h3>Chaqueta Moderna</h3>
-      <p>59.99€</p>
-      <button class="btn">Comprar</button>
+  <header>
+    <h1>MiMarca</h1>
+    <nav>
+      <a href="#Inicio">Inicio</a>
+      <a href="#Coleccion">Coleccion</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#Contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" type="button">Tema</button>
+      <button class="cart-btn" id="cartOpen" type="button">Carrito <span id="cartCount">0</span></button>
     </div>
+  </header>
 
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1542060748-10c28b62716f" alt="">
-      <h3>Camisetas Moderna</h3>
-      <p>19.99€</p>
-      <button class="btn">Comprar</button>
+  <section class="hero" id="Inicio">
+    <div class="hero-content">
+      <p class="hero-sub">Nueva temporada</p>
+      <h2>Nueva Coleccion 2026</h2>
+      <p class="hero-desc">Prendas limpias, versatiles y listas para vestir a diario.</p>
+      <div class="hero-btns">
+        <a class="btn" href="#Coleccion">Comprar Ahora</a>
+        <a class="btn btn-outline" href="#ofertas">Ver Ofertas</a>
+      </div>
     </div>
+  </section>
 
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="">
-      <h3>Jeans Slim</h3>
-      <p>39.99€</p>
-      <button class="btn">Comprar</button>
+  <section class="products" id="Coleccion">
+    <div class="section-header">
+      <h2>Productos Destacados</h2>
+      <p>Seleccion de prendas esenciales para renovar tu armario.</p>
     </div>
+    <div class="product-filters">
+      <button class="filter-btn active" type="button" data-filter="all">Todo</button>
+      <button class="filter-btn" type="button" data-filter="chaquetas">Chaquetas</button>
+      <button class="filter-btn" type="button" data-filter="camisetas">Camisetas</button>
+      <button class="filter-btn" type="button" data-filter="jeans">Jeans</button>
+    </div>
+    <div class="product-grid">
+      <article class="product" data-category="chaquetas">
+        <div class="product-img-wrap">
+          <span class="badge">Nuevo</span>
+          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=900&h=900&fit=crop" alt="Chaqueta moderna">
+        </div>
+        <div class="product-info">
+          <h3>Chaqueta Moderna</h3>
+          <p class="product-desc">Corte urbano con tejido ligero para entretiempo.</p>
+          <div class="product-footer">
+            <p class="price">59.99 EUR</p>
+            <button class="btn add-cart" type="button">Comprar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="camisetas">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542060748-10c28b62716f?w=900&h=900&fit=crop" alt="Camiseta moderna">
+        </div>
+        <div class="product-info">
+          <h3>Camiseta Moderna</h3>
+          <p class="product-desc">Algodon suave, patron minimalista y combinacion facil.</p>
+          <div class="product-footer">
+            <p class="price">19.99 EUR</p>
+            <button class="btn add-cart" type="button">Comprar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="jeans">
+        <div class="product-img-wrap">
+          <span class="badge badge-oferta">Oferta</span>
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=900&h=900&fit=crop" alt="Jeans slim">
+        </div>
+        <div class="product-info">
+          <h3>Jeans Slim</h3>
+          <p class="product-desc">Denim elastico con ajuste comodo para uso diario.</p>
+          <div class="product-footer">
+            <p class="price">39.99 EUR</p>
+            <button class="btn add-cart" type="button">Comprar</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="about-tag">Sobre nosotros</span>
+        <h2>Estilo minimalista y calidad real.</h2>
+        <p>Somos una marca moderna enfocada en ropa sencilla, duradera y facil de combinar.</p>
+        <p>Cuidamos cada detalle para que tus basicos funcionen temporada tras temporada.</p>
+        <ul class="about-values">
+          <li>Diseno limpio</li>
+          <li>Materiales comodos</li>
+          <li>Envios rapidos</li>
+          <li>Compra sencilla</li>
+        </ul>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&h=1100&fit=crop" alt="Interior de tienda de ropa">
+      </div>
+    </div>
+  </section>
+
+  <section class="offers" id="ofertas">
+    <div class="section-header light">
+      <h2>Ofertas</h2>
+      <p>Promociones activas para tu proximo pedido.</p>
+    </div>
+    <div class="offers-cards">
+      <article class="offer-card">
+        <span class="offer-pct">30%</span>
+        <h3>Nueva coleccion</h3>
+        <p>Descuento por lanzamiento durante tiempo limitado.</p>
+      </article>
+      <article class="offer-card">
+        <span class="offer-pct">0 EUR</span>
+        <h3>Envio gratis</h3>
+        <p>Disponible en pedidos superiores a 50 EUR.</p>
+      </article>
+      <article class="offer-card">
+        <span class="offer-pct">2x1</span>
+        <h3>Camisetas</h3>
+        <p>Combina tus colores favoritos en basicos seleccionados.</p>
+      </article>
+    </div>
+    <div class="offers-marquee">
+      <span>Oferta especial: Hasta 30% de descuento en nueva coleccion - Envio gratis en pedidos superiores a 50 EUR - Compra ahora y aprovecha</span>
+    </div>
+  </section>
+
+  <section class="subscribe" id="Contacto">
+    <div class="subscribe-inner">
+      <h2>Suscribete</h2>
+      <p>Recibe novedades, lanzamientos y descuentos antes que nadie.</p>
+      <form class="subscribe-form" id="subscribeForm">
+        <input id="email" name="email" type="email" placeholder="Tu email" required>
+        <button class="btn" id="subscribeBtn" type="submit">Enviar</button>
+      </form>
+      <p class="subscribe-note" id="subscribeMessage">Guardamos tu email en la base de datos local.</p>
+    </div>
+  </section>
+
+  <div class="cart-panel" id="cartPanel">
+    <aside class="cart-box" aria-label="Carrito">
+      <div class="cart-header">
+        <h2>Tu carrito</h2>
+        <button class="icon-btn" id="cartClose" type="button">X</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-total">
+        <strong>Total</strong>
+        <span id="cartTotal">0.00 EUR</span>
+      </div>
+      <button class="btn cart-checkout" id="checkoutBtn" type="button">Finalizar compra</button>
+    </aside>
   </div>
-</section>
 
-<section class="about">
-  <h2>Sobre Nosotros</h2>
-  <p>Somos una marca moderna enfocada en estilo minimalista y calidad.</p>
-</section>
-<!-- Sección de ofertas -->
-<section class="offers" id = "ofertas">
-  <h2>Ofertas</h2>
-  <div class="offers-marquee">
-    <span>Oferta especial: Hasta 30% de descuento en nueva colección • Envío gratis en pedidos superiores a 50€ • Compra ahora y aprovecha</span>
+  <div class="image-modal" id="imageModal">
+    <span class="modal-close" id="modalClose">x</span>
+    <img class="modal-content" id="modalImage" src="" alt="Imagen ampliada">
   </div>
-</section>
 
-<section class="subscribe" id = "Contacto">
-  <h2>Suscríbete</h2>
-  <input type="email" placeholder="Tu email">
-  <br><br>
-  <button class="btn">Enviar</button>
-</section>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>MiMarca</h3>
+        <p>Moda minimalista para vestir mejor cada dia.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Menu</h4>
+        <a href="#Inicio">Inicio</a>
+        <a href="#Coleccion">Coleccion</a>
+        <a href="#ofertas">Ofertas</a>
+      </div>
+      <div class="footer-social">
+        <h4>Social</h4>
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+      </div>
+    </div>
+    <p class="footer-copy">2026 MiMarca. Todos los derechos reservados.</p>
+  </footer>
 
-<div class="image-modal" id="imageModal">
-  <span class="modal-close" id="modalClose">×</span>
-  <img class="modal-content" id="modalImage" src="" alt="Imagen ampliada">
-</div>
-<!-- Footer -->
-<footer>
-  <p>© 2026 MiMarca | Instagram | Facebook</p>
-</footer>
-
+  <script src="script.js"></script>
 </body>
 </html>

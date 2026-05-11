@@ -46,6 +46,24 @@ const cartTotal = document.getElementById('cartTotal');
 const checkoutBtn = document.getElementById('checkoutBtn');
 const cart = [];
 
+async function postJson(url, payload) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.error || 'No se pudo completar la solicitud');
+  }
+
+  return data;
+}
+
 function renderCart() {
   cartItems.innerHTML = '';
 
@@ -105,16 +123,27 @@ cartPanel.addEventListener('click', (event) => {
   }
 });
 
-checkoutBtn.addEventListener('click', () => {
+checkoutBtn.addEventListener('click', async () => {
   if (cart.length === 0) {
     alert('Tu carrito esta vacio');
     return;
   }
 
-  alert('Compra preparada. Gracias por confiar en GGS.');
-  cart.length = 0;
-  renderCart();
-  cartPanel.classList.remove('open');
+  checkoutBtn.disabled = true;
+  checkoutBtn.textContent = 'Guardando...';
+
+  try {
+    await postJson('/api/orders', { items: cart });
+    alert('Compra guardada en la base de datos local. Gracias por confiar en MiMarca.');
+    cart.length = 0;
+    renderCart();
+    cartPanel.classList.remove('open');
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = 'Finalizar compra';
+  }
 });
 
 const themeToggle = document.getElementById('themeToggle');
@@ -131,15 +160,29 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-document.getElementById('subscribeBtn').addEventListener('click', () => {
-  const email = document.getElementById('email').value;
+const subscribeForm = document.getElementById('subscribeForm');
+const subscribeMessage = document.getElementById('subscribeMessage');
+const emailInput = document.getElementById('email');
 
-  if (email.trim() === '') {
-    alert('Por favor introduce un email');
-  } else if (!email.endsWith('@gmail.com')) {
-    alert('Solo se aceptan correos de Gmail (@gmail.com)');
-  } else {
-    alert('Gracias por suscribirte');
-    document.getElementById('email').value = '';
+subscribeForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const email = emailInput.value.trim();
+
+  if (email === '') {
+    subscribeMessage.textContent = 'Por favor introduce un email.';
+    return;
+  }
+
+  subscribeMessage.textContent = 'Guardando suscripcion...';
+
+  try {
+    await postJson('/api/subscribe', { email });
+    subscribeMessage.textContent = 'Gracias por suscribirte. Email guardado en local.';
+    emailInput.value = '';
+  } catch (error) {
+    subscribeMessage.textContent = error.message;
   }
 });
+
+renderCart();
