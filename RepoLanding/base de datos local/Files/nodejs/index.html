@@ -19,6 +19,10 @@
       <a href="#ofertas">Ofertas</a>
       <a href="#contacto">Contacto</a>
     </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Cambiar tema">Tema</button>
+      <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito">Carrito <span id="cartCount">0</span></button>
+    </div>
   </header>
 
   <!-- HERO -->
@@ -40,9 +44,15 @@
       <h2>Productos Destacados</h2>
       <p>Selección exclusiva de las piezas más vendidas de la temporada</p>
     </div>
+    <div class="product-filters" aria-label="Filtrar productos">
+      <button class="filter-btn active" data-filter="all">Todo</button>
+      <button class="filter-btn" data-filter="chaquetas">Chaquetas</button>
+      <button class="filter-btn" data-filter="camisetas">Camisetas</button>
+      <button class="filter-btn" data-filter="jeans">Jeans</button>
+    </div>
     <div class="product-grid">
 
-      <div class="product">
+      <div class="product" data-category="chaquetas">
         <div class="product-img-wrap">
           <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=600&h=400&fit=crop" alt="Chaqueta Moderna">
           <span class="badge">Nuevo</span>
@@ -52,12 +62,12 @@
           <p class="product-desc">Corte relajado, tejido premium. Perfecta para cualquier ocasión.</p>
           <div class="product-footer">
             <span class="price">59.99€</span>
-            <button class="btn">Comprar</button>
+            <button class="btn add-cart">Comprar</button>
           </div>
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" data-category="camisetas">
         <div class="product-img-wrap">
           <img src="https://images.unsplash.com/photo-1542060748-10c28b62716f?w=600&h=400&fit=crop" alt="Camiseta Moderna">
           <span class="badge badge-oferta">Oferta</span>
@@ -67,12 +77,12 @@
           <p class="product-desc">100% algodón orgánico. Disponible en 8 colores para esta temporada.</p>
           <div class="product-footer">
             <span class="price">19.99€</span>
-            <button class="btn">Comprar</button>
+            <button class="btn add-cart">Comprar</button>
           </div>
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" data-category="jeans">
         <div class="product-img-wrap">
           <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600&h=400&fit=crop" alt="Jeans Slim">
         </div>
@@ -81,7 +91,7 @@
           <p class="product-desc">Denim de alta calidad con corte ajustado. Durabilidad y estilo garantizados.</p>
           <div class="product-footer">
             <span class="price">39.99€</span>
-            <button class="btn">Comprar</button>
+            <button class="btn add-cart">Comprar</button>
           </div>
         </div>
       </div>
@@ -158,6 +168,24 @@
   <div class="image-modal" id="imageModal">
     <span class="modal-close" id="modalClose">×</span>
     <img class="modal-content" id="modalImage" src="" alt="Imagen ampliada">
+  </div>
+
+  <!-- CARRITO -->
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-box">
+      <div class="cart-header">
+        <h3>Tu carrito</h3>
+        <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">x</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">Todavia no has anadido productos.</p>
+      </div>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">0.00 EUR</strong>
+      </div>
+      <button class="btn cart-checkout" id="checkoutBtn">Finalizar compra</button>
+    </div>
   </div>
 
   <footer>
